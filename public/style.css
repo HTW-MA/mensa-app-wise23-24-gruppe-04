@@ -1,13 +1,67 @@
+/* Allgemein Body*/
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
     transition: background-color 0.5s, color 0.5s;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
 
 #content {
     border: 1px solid #ddd;
     padding: 20px;
     border-radius: 5px;
+}
+
+/* Login */
+.login-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Passwort Eingabe */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Login Button */
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Login Button Hover */
+.login-btn:hover {
+    background-color: #0056b3;
+}
+
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 /* Tagmodus */
@@ -21,6 +75,7 @@ body.night {
     background-color: #333;
     color: #fff;
 }
+
 
 /* Style the tab*/
 .tab {
@@ -57,4 +112,33 @@ body.night {
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+}
+
+/* Nachtmodus Styles für das Login-Feld */
+body.night .login-container {
+    background: #333;
+    /* Dunkler Hintergrund für das Login-Feld */
+    color: #fff;
+    /* Heller Text für das Login-Feld */
+}
+
+body.night input[type="text"],
+body.night input[type="password"] {
+    background: #555;
+    /* Dunkler Hintergrund für Eingabefelder */
+    color: #fff;
+    /* Heller Text für Eingabefelder */
+    border: 1px solid #777;
+    /* Dunkle Border für Eingabefelder */
+}
+
+body.night .login-btn {
+    background-color: #0056b3;
+    /* Dunklere Farbe für den Login-Button */
+    color: #fff;
+}
+
+body.night a {
+    color: #4da6ff;
+    /* Heller Link-Text im Nachtmodus */
 }
