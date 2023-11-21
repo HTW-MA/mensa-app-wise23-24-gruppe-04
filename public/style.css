@@ -8,6 +8,7 @@ body {
     text-align: center;
 }
 
+/* Allgemein Container*/
 #content {
     border: 1px solid #ddd;
     padding: 20px;
@@ -26,6 +27,15 @@ body {
 .input-group {
     margin-bottom: 20px;
     text-align: left;
+}
+
+/*Email Eingabe */
+input[type=email] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 /* Passwort Eingabe */
@@ -54,12 +64,13 @@ input[type="password"] {
     background-color: #0056b3;
 }
 
-
+/* Login Button Aktiv */
 a {
     color: #007bff;
     text-decoration: none;
 }
 
+/* Login Button Aktiv Hover */
 a:hover {
     text-decoration: underline;
 }
@@ -77,17 +88,21 @@ body.night {
 }
 
 
-/* Style the tab*/
+/* Style the tab */
 .tab {
+    display: flex;
+    /* Verwenden von Flexbox */
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
+    text-align: center;
 }
 
-/* Style the buttons inside the tab*/
+/* Style the buttons inside the tab */
 .tab button {
     background-color: inherit;
-    float: left;
+    flex-grow: 1;
+    /* Jeder Button nimmt gleich viel Raum ein */
     border: none;
     outline: none;
     cursor: pointer;
@@ -95,6 +110,7 @@ body.night {
     transition: 0.3s;
     font-size: 17px;
 }
+
 
 /* Change background color of buttons on hover*/
 .tab button:hover {
@@ -141,4 +157,54 @@ body.night .login-btn {
 body.night a {
     color: #4da6ff;
     /* Heller Link-Text im Nachtmodus */
+}
+
+/* Dropdown Container */
+.dropdown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+}
+
+/* Das Button-Design */
+.dropbtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Benutzer-Icon */
+.user-icon {
+    height: 30px;
+    /* oder eine andere passende Größe */
+    width: auto;
+}
+
+/* Das Dropdown-Menü */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Dropdown-Links */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/*Zeit das Dropdown-Menü zu an */
+.dropdown-content.show {
+    display: block;
+}
+
+/* Hover-Effekt für die Dropdown-Links */
+.dropdown-content a:hover {
+    background-color: #f1f1f1
 }

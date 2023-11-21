@@ -22,13 +22,41 @@ document.getElementById('modeToggle').addEventListener('click', function () {
     let button = this;
 
     if (body.classList.contains('night')) {
-        body.classList.replace('night', 'day');
+        body.classList.remove('night');
+        body.classList.add('day');
         button.textContent = 'Wechsle zu Nachtmodus';
     } else {
-        body.classList.replace('day', 'night');
+        body.classList.remove('day');
+        body.classList.add('night');
         button.textContent = 'Wechsle zu Tagmodus';
     }
 });
+
+
+// Dropdown Menü
+document.addEventListener('DOMContentLoaded', function () {
+    var dropdownButton = document.querySelector('.dropbtn');
+
+    dropdownButton.addEventListener('click', function (event) {
+        this.nextElementSibling.classList.toggle('show');
+        event.stopPropagation();
+    });
+    // 
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    };
+});
+
+
+
 
 // Standardmodus als Tagmodus festlegen
 document.body.classList.add('day');
