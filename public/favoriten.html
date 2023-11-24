@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon_heißhunger.png" />
+</head>
+
+<body>
+    <!-- Der Button zum Wechseln von Tag und Nacht Modus -->
+    <button id="modeToggle">Wechsel</button>
+    <div id="content">
+        <!-- User Icon Dropdown Menü -->
+        <div class="backarrow" onclick="window.location.href='index.html'">
+            <img src="back_arrow.png" alt="Zurück" class="backarrow-icon">
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">
+                <img src="user_icon.png" alt="Benutzer" class="user-icon"> <!-- Pfad zum Benutzer-Icon -->
+            </button>
+            <div class="dropdown-content">
+                <a href="einstellungen.html">Einstellungen</a>
+                <a href="favoriten.html">Favoriten</a>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+</body>
+
+</html>
