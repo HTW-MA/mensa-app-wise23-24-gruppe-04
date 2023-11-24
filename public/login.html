@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button id="modeToggle">Wechsel</button>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="/submit-your-login-form" method="post">
+            <div class="input-group">
+                <label for="username">Benutzername:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Passwort:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+        <p>Noch kein Benutzerkonto? Hier geht es zur <a href="registrierung.html">Registrierung</a></p>
+
+        <p>Oder <a href="index.html">als Gast fortfahren</a></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
