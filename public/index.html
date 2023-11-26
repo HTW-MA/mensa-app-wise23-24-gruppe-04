@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="../src/style.css">
+    <link rel="icon" type="image/png" href="favicon_heißhunger.png" />
+</head>
+<!-- Tab links-->
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Home' )">Home</button>
+    <button class="tablinks" onclick="openTab(event, 'Mensa Finder' )">Mensa Finder</button>
+    <button class="tablinks" onclick="openTab(event, 'Gerichtsfinder' )">Gerichtsfinder</button>
+</div>
+
+
+<body>
+    <!-- Der Button zum Wechseln von Tag und Nacht Modus -->
+    
+        <!-- User Icon Dropdown Menü -->
+        <div class="dropdown">
+            <button class="dropbtn">
+                <img src="user_icon.png" alt="Benutzer" class="user-icon"> <!-- Pfad zum Benutzer-Icon -->
+            </button>
+            <div class="dropdown-content">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="modeToggle">
+                    <span class="toggle-slider"></span>
+                </label>
+                <label for="modeToggle">Wechsel</label>
+                <p>[Placeholder] </p>
+                <p>[Placeholder] </p>
+                <p>[Placeholder] </p>
+                <p>[Placeholder] </p>
+                <p>[Placeholder] </p>
+            </div>
+        </div>
+        <p>
+
+
+
+        </p>
+
+        <!-- Outer Tab content Home -->
+        <div id="Home" class="tabcontent">
+            <h3>Home</h3>
+            <h1>H1 Willkommen bei Heißhunger!</h1>
+            <p>Dies ist eine von Studenten erstellte Progressive Web App, die einerseits als Übung aber auch als
+                möglichen Ersatz für die bisherigen Lösungen dienen soll.</p>
+           <p>[Disclaimer: Hier will ich später so ne Auswahl aus Lieblingsmensen und Gerichten haben, weiß nicht ob das über die API geht, aber könnt ihr ja Bescheid sagen.]</p>
+        </div>
+
+        <!-- Outer Tab content Mensa Finder -->
+        <div id="Mensa Finder" class="tabcontent">
+
+            <!-- Inner Tabs inside the "Mensa Finder" Tabs -->
+            <div class="inner-tab">
+                <button class="inner-tablinks" onclick="openInnerTab(event, 'sorted_hochschule')">Hochschule</button>
+                <button class="inner-tablinks" onclick="openInnerTab(event, 'sorted_bezirk')">Bezirk</button>
+                <button class="inner-tablinks" onclick="openInnerTab(event, 'Maps')">Karte</button>
+            </div>
+            <h3>Mensa Finder</h3>
+            <p>Finde deine Mensa!</p>
+
+            <!-- Innerer Tab-Inhalt Mensa Finder -->
+            <div id="sorted_hochschule" class="inner-tabcontent">
+                <h4>Nach Hoschule sortiert</h4>
+                <p>[Disclaimer: Hier von API Hochschulen einfügen]</p>
+            </div>
+            <div id="sorted_bezirk" class="inner-tabcontent">
+                <h4>Nach Bezirk sortiert</h4>
+                <p>[Disclaimer: Hier von API Hochschulen (hier bin ich mir unsicher ob die API schon ne Sortierfunktion hat, wenn nicht bau ich später noch eine, hier mir bitte Rückmeldung geben.]) einfügen]
+                </p>
+            </div>
+            <div id="Maps" class="inner-tabcontent">
+                <h4>Karte</h4>
+                <p>Hier soll irgendwann eine Karte stehen</p>
+                [Disclaimer: Hier füge ich irgendwann noch die Map ein]
+                <p>https://www.google.com/maps/embed/v1/MAP_MODE?key=YOUR_API_KEY&PARAMETERS</p>
+            </div>
+            <!-- Outer Tab content Mensa Finder -->
+
+            <div id="Mensa Finder" class="tabcontent">
+                <h3>Mensa Finder</h3>
+                <p>Finde deine Mensa!</p>
+                <!-- Suchfeld -->
+            </div>
+        </div> <!-- Schließt den Mensa Finder Tab -->
+
+        <!-- Outer Tab content Gerichtsfinder -->
+<div id="Gerichtsfinder" class="tabcontent">
+    <h3>Gerichtsfinder</h3>
+    <p>Finde dein Gericht!</p>
+    <input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Finde dein Gericht">
+    <div id="searchResults"></div>
+
+    <!-- Neue innere Tabs für Gerichtsfinder -->
+    <div class="inner-tab">
+        <button class="inner-tablinks" onclick="openInnerTab(event, 'Vorspeise')">Vorspeise</button>
+        <button class="inner-tablinks" onclick="openInnerTab(event, 'Suppe')">Suppe</button>
+        <button class="inner-tablinks" onclick="openInnerTab(event, 'Hauptgericht')">Hauptgericht</button>
+        <button class="inner-tablinks" onclick="openInnerTab(event, 'Beilagen')">Beilagen</button>
+        <button class="inner-tablinks" onclick="openInnerTab(event, 'Dessert')">Dessert</button>
+    </div>
+
+    <!-- Innerer Tab-Inhalt für Gerichtsfinder -->
+    <div id="Vorspeise" class="inner-tabcontent">
+        <h4>Vorspeisen</h4>
+        <!-- Inhalt für Vorspeisen -->
+        [Disclaimer: Hier von API getMeals einfügen]
+    </div>
+    <div id="Suppe" class="inner-tabcontent">
+        <h4>Suppen</h4>
+        <!-- Inhalt für Suppen -->
+        [Disclaimer: Hier von API getMeals einfügen]
+      </div>
+    <div id="Hauptgericht" class="inner-tabcontent">
+        <h4>Hauptgerichte</h4>
+        <!-- Inhalt für Hauptgerichte -->
+        [Disclaimer: Hier von API getMeals einfügen]
+    </div>
+    <div id="Beilagen" class="inner-tabcontent">
+        <h4>Beilagen</h4>
+        <!-- Inhalt für Beilagen -->
+        [Disclaimer: Hier von API getMeals einfügen]
+    </div>
+    <div id="Dessert" class="inner-tabcontent">
+        <h4>Desserts</h4>
+        <!-- Inhalt für Desserts -->
+        [Disclaimer: Hier von API getMeals einfügen]
+    </div>
+</div>
+
+
+            <script src="../src/script.js"></script>
+
+</body>
+
+</html>
