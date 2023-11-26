@@ -26,25 +26,33 @@ document.getElementById('modeToggle').addEventListener('click', function () {
     if (body.classList.contains('night')) {
         body.classList.remove('night');
         body.classList.add('day');
-        button.textContent = 'Wechsle zu Nachtmodus';
+        button.textContent = 'Wechsel';
     } else {
         body.classList.remove('day');
         body.classList.add('night');
-        button.textContent = 'Wechsle zu Tagmodus';
+        button.textContent = 'Wechsel';
     }
 });
 
 
 // Dropdown Menü
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     var dropdownButton = document.querySelector('.dropbtn');
+    var dropdownContent = document.querySelector('.dropdown-content');
 
-    dropdownButton.addEventListener('click', function (event) {
+    // Toggle Dropdown-Menü bei Klick auf den Button
+    dropdownButton.addEventListener('click', function(event) {
         this.nextElementSibling.classList.toggle('show');
         event.stopPropagation();
     });
-    // 
-    window.onclick = function (event) {
+
+    // Verhindern, dass das Dropdown-Menü bei Klicks innerhalb des Menüs geschlossen wird
+    dropdownContent.addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
+
+    // Schließen des Dropdowns, wenn außerhalb geklickt wird
+    window.onclick = function(event) {
         if (!event.target.matches('.dropbtn')) {
             var dropdowns = document.getElementsByClassName("dropdown-content");
             for (var i = 0; i < dropdowns.length; i++) {
@@ -56,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 });
+
 // Code zum Anzeigen/Ausblenden der inneren Tabs
 function openInnerTab(evt, tabName) {
     // Declare all variables

@@ -15,66 +15,6 @@ body {
     border-radius: 5px;
 }
 
-/* Login */
-.login-container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.input-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-/*Email Eingabe */
-input[type=email] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-/* Passwort Eingabe */
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-/* Login Button */
-.login-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-/* Login Button Hover */
-.login-btn:hover {
-    background-color: #0056b3;
-}
-
-/* Login Button Aktiv */
-a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-/* Login Button Aktiv Hover */
-a:hover {
-    text-decoration: underline;
-}
-
 /* Tagmodus */
 body.day {
     background-color: #FFEBCD;
@@ -98,6 +38,7 @@ body.night {
     border: 1px solid #ccc;
     background-color: #f1f1f1;
     text-align: center;
+    border-radius: 25px;
 }
 
 /* Style the buttons inside the tab */
@@ -111,6 +52,7 @@ body.night {
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
+    border-radius: 5px;
 }
 
 
@@ -130,35 +72,6 @@ body.night {
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
-}
-
-/* Nachtmodus Styles für das Login-Feld */
-body.night .login-container {
-    background: #333;
-    /* Dunkler Hintergrund für das Login-Feld */
-    color: #fff;
-    /* Heller Text für das Login-Feld */
-}
-
-body.night input[type="text"],
-body.night input[type="password"] {
-    background: #555;
-    /* Dunkler Hintergrund für Eingabefelder */
-    color: #fff;
-    /* Heller Text für Eingabefelder */
-    border: 1px solid #777;
-    /* Dunkle Border für Eingabefelder */
-}
-
-body.night .login-btn {
-    background-color: #0056b3;
-    /* Dunklere Farbe für den Login-Button */
-    color: #fff;
-}
-
-body.night a {
-    color: #4da6ff;
-    /* Heller Link-Text im Nachtmodus */
 }
 
 /* Dropdown Container */
@@ -186,9 +99,10 @@ body.night a {
 /* Das Dropdown-Menü */
 .dropdown-content {
     display: none;
-    position: absolute;
+    position: fixed; 
     background-color: #f9f9f9;
-    min-width: 160px;
+    width: 150px; 
+    height: 100vh; 
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
@@ -199,6 +113,7 @@ body.night a {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    border: 1px solid #080000;
 }
 
 /*Zeit das Dropdown-Menü zu an */
@@ -264,4 +179,58 @@ body.night a {
 /*Stil für die Suchergebnisse*/
 #searchResults p {
     width: 50%;
+}
+/* Toggle Switch Container */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* The slider */
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+    background-color: #2196F3;
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+}
+
+/* Style for input[type="checkbox"] */
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Style for Day/Night labels */
+.toggle-switch label {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
 }
