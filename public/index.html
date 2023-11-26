@@ -134,6 +134,20 @@
 
 
             <script src="../src/script.js"></script>
+            <script>
+                if ('serviceWorker' in navigator) {
+                  window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js')
+                      .then((reg) => {
+                        console.log('Service Worker: Registriert', reg);
+                      })
+                      .catch((err) => {
+                        console.error('Service Worker: Registrierungsfehler: ', err);
+                      });
+                  });
+                }
+              </script>
+              
 
 </body>
 
