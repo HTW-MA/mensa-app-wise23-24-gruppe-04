@@ -2,8 +2,6 @@
   <NavBar></NavBar>
   <FinderNavBar></FinderNavBar>
   <KarteFilter></KarteFilter>
-
-
 </template>
 
 <script>
@@ -12,23 +10,14 @@ import KarteFilter from "@/components/KarteFilter.vue";
 import NavBar from "@/components/NavBar.vue";
 
 export default {
-  name: ""
-  ,
-  components: {NavBar, KarteFilter, FinderNavBar},
-  methods: {
-
-  }, props: {
-
-  }, data() {
-    return {
-
-    }
-  }
-}
-
+  name: "",
+  components: { NavBar, KarteFilter, FinderNavBar },
+  methods: {},
+  props: {},
+  data() {
+    return {};
+  },
+};
 </script>
 
-<style>
-
-
-</style>
+<style></style>

@@ -2,7 +2,6 @@
   <NavBar></NavBar>
   <FinderNavBar></FinderNavBar>
   <BezirkFilter></BezirkFilter>
-
 </template>
 
 <script>
@@ -11,23 +10,14 @@ import FinderNavBar from "@/components/FinderNavBar.vue";
 import BezirkFilter from "@/components/BezirkFilter.vue";
 
 export default {
-  name: ""
-  ,
-  components: {BezirkFilter, FinderNavBar, NavBar},
-  methods: {
-
-  }, props: {
-
-  }, data() {
-    return {
-
-    }
-  }
-}
-
+  name: "",
+  components: { BezirkFilter, FinderNavBar, NavBar },
+  methods: {},
+  props: {},
+  data() {
+    return {};
+  },
+};
 </script>
 
-<style>
-
-
-</style>
+<style></style>

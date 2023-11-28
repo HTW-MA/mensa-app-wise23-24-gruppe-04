@@ -1,26 +1,26 @@
-export const get_menu_of_the_day = async (mensa_id) => {
+/**
+ * @param mensa_id
+ * @returns all menus of a mensa as JSON
+ */
 
-  let date = new Date();
-  let year = date.getFullYear();
-  let month = date.getMonth() + 1;
-  let day = date.getDate();
-  let today = year + "-" + month + "-" + day;
-
-
+export const get_all_menus = async (mensa_id) => {
   try {
-    const url = process.env.VUE_APP_BACKEND_BASEURL + '/menue?canteenId=' + mensa_id + '&startdate=' + today + '&enddate=' + today;
+    const url =
+      process.env.VUE_APP_BACKEND_BASEURL +
+      "/menue?canteenId=" +
+      mensa_id
     const requestOptions = {
-      method: 'GET',
-      redirect: 'follow',
+      method: "GET",
+      redirect: "follow",
       headers: {
-        'X-API-KEY': process.env.VUE_APP_BACKEND_API_KEY
-      }
+        "X-API-KEY": process.env.VUE_APP_BACKEND_API_KEY,
+      },
     };
 
     const response = await fetch(url, requestOptions);
 
     if (!response.ok) {
-      throw new Error('Netzwerkfehler');
+      throw new Error("Netzwerkfehler");
     }
 
     const data = await response.json();

@@ -1,27 +1,25 @@
 <template>
   <FavMensaAndDay></FavMensaAndDay>
   <BurgerMenu></BurgerMenu>
-  <router-view/>
+  <router-view />
 </template>
 
 <script>
-
 import BurgerMenu from "@/components/BurgerMenu.vue";
 import FavMensaAndDay from "@/components/FavMensaAndDay.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     FavMensaAndDay,
-    BurgerMenu
-  }, methods: {
-  }, props: {
-
-  }, data() {
-    return {
-    }
-  }
-}
+    BurgerMenu,
+  },
+  methods: {},
+  props: {},
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style>
@@ -37,7 +35,9 @@ export default {
 body {
   font-family: Arial, sans-serif;
   padding: 20px;
-  transition: background-color 0.5s, color 0.5s;
+  transition:
+    background-color 0.5s,
+    color 0.5s;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   text-align: center;
@@ -52,7 +52,7 @@ body {
 
 /* Tagmodus */
 body.day {
-  background-color: #FFEBCD;
+  background-color: #ffebcd;
   color: #333;
 }
 
@@ -61,7 +61,6 @@ body.night {
   background-color: #333;
   color: #fff;
 }
-
 
 /* Style the tab */
 .tab {
@@ -90,7 +89,6 @@ body.night {
   border-radius: 5px;
 }
 
-
 /* Change background color of buttons on hover*/
 .tab button:hover {
   background-color: #ddd;
@@ -108,14 +106,12 @@ body.night {
   border-top: none;
 }
 
-
 /* Benutzer-Icon */
 .user-icon {
   height: 30px;
   /* oder eine andere passende Größe */
   width: auto;
 }
-
 
 /* Stile für innere Tabs */
 .inner-tab {
@@ -187,7 +183,7 @@ body.night {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 34px;
 }
 
@@ -199,12 +195,12 @@ body.night {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 50%;
 }
 
 input:checked + .toggle-slider {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 input:checked + .toggle-slider:before {
@@ -224,5 +220,4 @@ input:checked + .toggle-slider:before {
   color: #666;
   text-align: center;
 }
-
 </style>
