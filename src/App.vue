@@ -1,4 +1,5 @@
 <template>
+  <FavMensaAndDay></FavMensaAndDay>
   <BurgerMenu></BurgerMenu>
   <router-view/>
 </template>
@@ -6,11 +7,19 @@
 <script>
 
 import BurgerMenu from "@/components/BurgerMenu.vue";
+import FavMensaAndDay from "@/components/FavMensaAndDay.vue";
 
 export default {
   name: 'App',
   components: {
+    FavMensaAndDay,
     BurgerMenu
+  }, methods: {
+  }, props: {
+
+  }, data() {
+    return {
+    }
   }
 }
 </script>

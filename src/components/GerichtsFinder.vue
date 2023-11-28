@@ -4,59 +4,91 @@
   <div id="Gerichtsfinder" class="tabcontent">
     <h3>Gerichtsfinder</h3>
     <p>Finde dein Gericht!</p>
-    <input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Finde dein Gericht">
+    <p><b>Achtung: </b> du sieht nur Gerichte für {{this.fav_mensa}} am {{this.get_day()}}</p>
+    <input type="text" id="searchInput" placeholder="Finde dein Gericht" v-model=search>
     <div id="searchResults"></div>
 
-    <!-- Neue innere Tabs für Gerichtsfinder -->
-    <div class="inner-tab">
-      <button class="inner-tablinks" onclick="openInnerTab(event, 'Vorspeise')">Vorspeise</button>
-      <button class="inner-tablinks" onclick="openInnerTab(event, 'Suppe')">Suppe</button>
-      <button class="inner-tablinks" onclick="openInnerTab(event, 'Hauptgericht')">Hauptgericht</button>
-      <button class="inner-tablinks" onclick="openInnerTab(event, 'Beilagen')">Beilagen</button>
-      <button class="inner-tablinks" onclick="openInnerTab(event, 'Dessert')">Dessert</button>
-    </div>
-
-    <!-- Innerer Tab-Inhalt für Gerichtsfinder -->
-    <div id="Vorspeise" class="inner-tabcontent">
-      <h4>Vorspeisen</h4>
-      <!-- Inhalt für Vorspeisen -->
-      [Disclaimer: Hier von API getMeals einfügen]
-    </div>
-    <div id="Suppe" class="inner-tabcontent">
-      <h4>Suppen</h4>
-      <!-- Inhalt für Suppen -->
-      [Disclaimer: Hier von API getMeals einfügen]
-    </div>
-    <div id="Hauptgericht" class="inner-tabcontent">
-      <h4>Hauptgerichte</h4>
-      <!-- Inhalt für Hauptgerichte -->
-      [Disclaimer: Hier von API getMeals einfügen]
-    </div>
-    <div id="Beilagen" class="inner-tabcontent">
-      <h4>Beilagen</h4>
-      <!-- Inhalt für Beilagen -->
-      [Disclaimer: Hier von API getMeals einfügen]
-    </div>
-    <div id="Dessert" class="inner-tabcontent">
-      <h4>Desserts</h4>
-      <!-- Inhalt für Desserts -->
-      [Disclaimer: Hier von API getMeals einfügen]
-    </div>
   </div>
 
+    <!-- Innerer Tab-Inhalt für Gerichtsfinder -->
+    <div id="Meals" class="inner-tabcontent" style="align-items: center; justify-content: space-between">
+      <h4>Speisekarte</h4>
+      <div class="table-container">
+      <table class="meal_table">
+        <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Typ</th>
+          <th scope="col">Preis</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-if="menu && menu.length > 0" v-for="(meal, index) in filtered_meals" :key="index">
+          <td style="max-width: 30vw">{{ meal.name }}</td>
+          <td>{{meal.category }}</td>
+          <!-- TODO: Validierung ob es ein Student oder nicht: user change -->
+          <td>{{meal.price_student}}€</td>
+
+        </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
 
 </template>
 
 <script>
+import {get_menu_of_the_day} from "@/data/transactionmanager_meal.js";
+import {get_all_mensen} from "@/data/transactionmanager_mensa.js";
+
 export default {
   name: "GerichtsFinder"
   , methods: {
-
-  }, props: {
-
-  }, data() {
+    get_day(){
+      let currrent_day_in_words = ""
+      switch (this.sel_day - 1) {
+        case 0:
+          currrent_day_in_words = "Montag"
+          break;
+        case 1:
+          currrent_day_in_words = "Dienstag"
+          break;
+        case 2:
+          currrent_day_in_words = "Mittwoch"
+          break;
+        case 3:
+          currrent_day_in_words = "Donnerstag"
+          break;
+        case 4:
+          currrent_day_in_words = "Freitag"
+          break;
+        case 5:
+          currrent_day_in_words = "Samstag"
+          break;
+        case 6:
+          currrent_day_in_words = "Sonntag"
+          break;
+      }
+      return currrent_day_in_words
+    }
+  }, props: {}, data() {
     return {
+      menu: null,
+      search: '',
+      fav_mensa: localStorage.getItem('fav_mensa'),
+      sel_day: localStorage.getItem('sel_day')
+    }
+  }, async mounted() {
 
+    let all_mensen = await get_all_mensen()
+    let mensa_id = all_mensen.filter(mensa => mensa.name === this.fav_mensa)[0].id
+
+    this.menu = await get_menu_of_the_day(mensa_id)
+
+
+  }, computed: {
+    filtered_meals() {
+      return this.menu[0].meals
     }
   }
 }
@@ -65,5 +97,31 @@ export default {
 
 <style>
 
+.table-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.meal_table{
+  width: 100%;
+  margin: 10px;
+}
+
+.meal_table th{
+  text-align: center;
+}
+
+.meal_table td{
+  text-align: center;
+}
+
+.meal_table tr{
+  cursor: pointer;
+}
+
+.meal_table tr:hover{
+  background-color: #f5f5f5;
+}
 
 </style>
