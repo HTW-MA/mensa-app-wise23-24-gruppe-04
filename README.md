@@ -14,7 +14,7 @@ VUE_APP_BACKEND_API_KEY=<<YOURAPIKEY>>
 ```
 npm install
 ```
-
+2. Start app
 ```
 npm run serve
 ```

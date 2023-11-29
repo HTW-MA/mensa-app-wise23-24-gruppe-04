@@ -1,9 +1,7 @@
 <template>
-  <!-- Outer Tab content Mensa Finder -->
   <div id="Mensa Finder" class="tabcontent">
     <h3>Mensa Finder</h3>
     <p>Finde deine Mensa!</p>
-    <!--Search bar here-->
     <div class="input-group mb-3">
       <input
         type="text"
@@ -51,7 +49,6 @@
       </table>
     </div>
   </div>
-  <!-- Schließt den Mensa Finder Tab -->
 </template>
 
 <script>
@@ -69,53 +66,20 @@ export default {
   },
   methods: {
     check_open(mensa) {
-      //TODO: change time, if day is changed (localStorage.getItem("sel_day"))
-      let current_time = new Date();
-      //Explaination: 0 = Monday, 1 = Tuesday, 2 = Wednesday, 3 = Thursday, 4 = Friday, 5 = Saturday, 6 = Sunday
-      let current_day = current_time.getDay() - 1;
-      let currrent_day_in_words = "";
-
-      switch (current_day) {
-        case 0:
-          currrent_day_in_words = "Montag";
-          break;
-
-        case 1:
-          currrent_day_in_words = "Dienstag";
-          break;
-
-        case 2:
-          currrent_day_in_words = "Mittwoch";
-          break;
-
-        case 3:
-          currrent_day_in_words = "Donnerstag";
-          break;
-
-        case 4:
-          currrent_day_in_words = "Freitag";
-          break;
-
-        case 5:
-          currrent_day_in_words = "Samstag";
-          break;
-
-        case 6:
-          currrent_day_in_words = "Sonntag";
-          break;
-      }
+      //get weeksday of selected day. -1 because of the array index
+       let sel_day_weekday = new Date(localStorage.getItem("sel_day")).getDay() - 1;
 
       try {
         return (
-          "Heute (" +
-          currrent_day_in_words +
-          ") geöffnet von " +
-          mensa.businessDays[current_day].businessHours[0].openAt +
+          "Am " +
+          localStorage.getItem("sel_day") +
+          " geöffnet von " +
+          mensa.businessDays[sel_day_weekday].businessHours[0].openAt +
           " bis " +
-          mensa.businessDays[current_day].businessHours[0].closeAt
+          mensa.businessDays[sel_day_weekday].businessHours[0].closeAt
         );
       } catch (error) {
-        return "Heute geschlossen";
+        return "Geschlossen";
       }
     },
     is_fav(mensa) {

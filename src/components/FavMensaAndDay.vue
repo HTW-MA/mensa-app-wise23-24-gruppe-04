@@ -1,18 +1,10 @@
 <template>
   <div style="display: flex; justify-content: space-between">
     <p><b>Deine Mensa:</b> {{ this.fav_mensa }}</p>
-  <input id="date" type="date" @change="change_date" v-model="selectedDay">
+  <input id="date" type="date" @change="change_date" v-model="sel_day" >
   </div>
   <div>
-    <select
-      v-model="selectedRole"
-      @change="change_role"
-      style="position: absolute; left: 2vw"
-    >
-      <option v-for="(role, index) in roles" :key="index" :value="role.value">
-        {{ role.label }}
-      </option>
-    </select>
+
   </div>
 </template>
 
@@ -21,24 +13,16 @@
 export default {
   name: "FavMensaAndDay",
   methods: {
-    /**
-     * Changes the role of the user
-     * Is called when the user changes the role in the dropdown menu
-     * Stores the new role in the local storage
-     */
-    change_role() {
-      localStorage.setItem("sel_role", this.selectedRole);
-      //TODO: Reload is a terrible solution, has to be changed
-      window.location.reload();
-    },
+
     /**
      * Changes the day of the user
      * Is called when the user changes the day in the calender input
      * Stores the new day in the local storage
      */
     change_date() {
-      //TODO: display the selected day also after reload
-      localStorage.setItem("sel_day", this.selectedDay);
+      localStorage.setItem("sel_day", this.sel_day);
+      //TODO: Reload is a terrible solution, has to be changed
+      window.location.reload();
     },
   },
   props: {},
@@ -46,21 +30,21 @@ export default {
     return {
       /**
        * fav_mensa: The mensa the user has selected as his favorite
-       * selectedRole: The role the user has selected in the dropdown menu
-       * selectedDay: The day the user has selected in the calender input
+       * sel_day: The day the user has selected in the calender input
        */
       fav_mensa: localStorage.getItem("fav_mensa"),
-      selectedRole: 0,
-      roles: [
-        { label: "Student", value: 0 },
-        { label: "Mitarbeiter", value: 1 },
-        { label: "Gast", value: 2 },
-      ],
-      selectedDay: null
+      sel_day: localStorage.getItem("sel_day")
     };
   },
   mounted() {
-    this.selectedRole = localStorage.getItem("sel_role");
+    /**
+     * If user enters the page for the first time, the date is set to the current date
+     * TODO: should we set the role to student as well?
+     */
+    if (localStorage.getItem("sel_day") === null) {
+      localStorage.setItem("sel_day", new Date().toISOString().slice(0, 10));
+    }
+
   },
 };
 </script>
