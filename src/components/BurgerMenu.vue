@@ -4,7 +4,7 @@
       src="../assets/user_icon.png"
       alt="Burger Icon"
       @click="showMenu = !showMenu"
-      style="cursor: pointer; width: 50px; height: 50px;"
+      style="cursor: pointer; width: 50px; height: 50px"
     />
 
     <div v-if="showMenu" class="burger-menu" @click="toggleMenu">
@@ -24,15 +24,15 @@ export default {
   name: "BurgerMenu",
   data() {
     return {
-      showMenu: false
+      showMenu: false,
     };
   },
   methods: {
     toggleMenu() {
       this.showMenu = !this.showMenu;
       document.getElementById("burger-menu").style.display = "block";
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -46,6 +46,4 @@ export default {
   padding: 10px;
   z-index: 999; /* Stellt sicher, dass das Menü über anderen Inhalten liegt */
 }
-
-
 </style>

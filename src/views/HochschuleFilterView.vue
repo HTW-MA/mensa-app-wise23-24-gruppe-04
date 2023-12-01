@@ -2,7 +2,6 @@
   <NavBar></NavBar>
   <FinderNavBar></FinderNavBar>
   <HochschuleFilter></HochschuleFilter>
-
 </template>
 
 <script>
@@ -11,26 +10,18 @@ import HochschuleFilter from "@/components/HochschuleFilter.vue";
 import NavBar from "@/components/NavBar.vue";
 
 export default {
-  name:"HochschuleFilterView",
+  name: "HochschuleFilterView",
   components: {
     NavBar,
     HochschuleFilter,
-    FinderNavBar
+    FinderNavBar,
   },
-  methods: {
-
-  }, props: {
-
-  }, data() {
-    return {
-
-    }
-  }
-}
-
+  methods: {},
+  props: {},
+  data() {
+    return {};
+  },
+};
 </script>
 
-<style>
-
-
-</style>
+<style></style>
