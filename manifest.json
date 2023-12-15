@@ -1,0 +1,9 @@
+{
+  "name": "My PWA",
+  "short_name": "My PWA",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "icon": "/favicon.ico",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}

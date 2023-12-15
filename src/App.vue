@@ -2,6 +2,7 @@
   <FavMensaAndDay></FavMensaAndDay>
   <BurgerMenu></BurgerMenu>
   <router-view />
+  <link id="dark-theme-style" rel="stylesheet" />
 </template>
 
 <script>
