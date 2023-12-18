@@ -3,8 +3,7 @@
   <div class="inner-tab">
     <button
       class="inner-tablinks"
-      onclick="window.location.href = '/hochschule'"
-    >
+      onclick="window.location.href = '/hochschule'">
       Hochschule
     </button>
     <button class="inner-tablinks" onclick="window.location.href = '/bezirk'">

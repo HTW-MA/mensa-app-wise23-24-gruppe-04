@@ -7,9 +7,10 @@
       style="cursor: pointer; width: 50px; height: 50px"
     />
 
-    <div v-if="showMenu" class="burger-menu" @click="toggleMenu">
+    <div :class="{ hidden: !showMenu, visible: showMenu }" class="burger-menu" @click="toggleMenu">
       <!-- Hier kommen die Menüpunkte hin -->
       <ul>
+        <li @click="toggleToggleMode">{{ dayNightModeText }}</li>
         <li>Home</li>
         <li>About</li>
         <li>Contact</li>
@@ -27,25 +28,29 @@ export default {
   data() {
     return {
       showMenu: false,
+      isNightMode: false // Keeps track of the current mode
     };
   },
-  methods: {
-    toggleMenu() {
-      this.showMenu = !this.showMenu;
-      document.getElementById("burger-menu").style.display = "block";
-    },
+  computed: {
+    dayNightModeText() {
+      return this.isNightMode ? 'Day Mode' : 'Night Mode';
+    }
   },
+  methods: {
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
+    // No need for direct DOM manipulation
+  },
+  toggleToggleMode() {
+    this.isNightMode = !this.isNightMode;
+    this.$emit('toggle-mode', this.isNightMode);
+  }
+}
+
 };
 </script>
 
+
 <style>
-/* Stil für das Burger-Menü */
-.burger-menu {
-  position: fixed;
-  top: 50px; /* Anpassen der Position nach Bedarf */
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 10px;
-  z-index: 999; /* Stellt sicher, dass das Menü über anderen Inhalten liegt */
-}
+
 </style>

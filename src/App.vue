@@ -1,8 +1,10 @@
+
 <template>
+   <BurgerMenu @toggle-mode="handleToggleMode" />
   <FavMensaAndDay></FavMensaAndDay>
-  <BurgerMenu></BurgerMenu>
   <router-view />
   <link id="dark-theme-style" rel="stylesheet" />
+ 
 </template>
 
 <script>
@@ -15,7 +17,26 @@ export default {
     FavMensaAndDay,
     BurgerMenu,
   },
-  methods: {},
+  created() {
+  const savedMode = localStorage.getItem('isNightMode');
+  if (savedMode !== null) {
+    this.isNightMode = savedMode === 'true';
+    this.applyTheme(this.isNightMode);
+  }
+},
+methods: {
+  handleToggleMode(isNightMode) {
+    if (isNightMode) {
+      document.body.classList.add("night");
+      document.body.classList.remove("day");
+    } else {
+      document.body.classList.add("day");
+      document.body.classList.remove("night");
+    }
+    // Update the local storage
+    localStorage.setItem('isNightMode', isNightMode);
+  }
+},
   props: {},
   data() {
     return {};
@@ -57,12 +78,6 @@ body.day {
   color: #333;
 }
 
-/* Nachtmodus */
-body.night {
-  background-color: #333;
-  color: #fff;
-}
-
 /* Style the tab */
 .tab {
   margin-top: 20px;
@@ -81,13 +96,14 @@ body.night {
   background-color: inherit;
   flex-grow: 1;
   /* Jeder Button nimmt gleich viel Raum ein */
-  border: none;
+  border: 1px solid #ccc ;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
   font-size: 17px;
   border-radius: 5px;
+  text-align: center;
 }
 
 /* Change background color of buttons on hover*/
@@ -122,6 +138,8 @@ body.night {
   border: 1px solid #ccc;
   background-color: #f1f1f1;
   text-align: center;
+  border-radius: 25px;
+
 }
 
 /* Stile für innere Tab-Buttons */
@@ -129,12 +147,13 @@ body.night {
   background-color: inherit;
   flex-grow: 1;
   /* Jeder Button nimmt gleich viel Raum ein */
-  border: none;
+  border: 1px solid #ccc;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
   font-size: 17px;
+  text-align: center;
 }
 
 /* Ändern der Hintergrundfarbe der inneren Buttons beim Hovern */
@@ -221,4 +240,158 @@ input:checked + .toggle-slider:before {
   color: #666;
   text-align: center;
 }
+
+/* Stil für das Burger-Menü */
+.burger-menu {
+  position: fixed;
+  top: 50px; /* Anpassen der Position nach Bedarf */
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 999; /* Stellt sicher, dass das Menü über anderen Inhalten liegt */
+}
+
+/* Stile für das Dropdown-Menü */
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Stile für das Dropdown-Auswahlmenü */
+.dropdown-select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block; /* or whatever display type is appropriate */
+}
+
+/* Ab hier Nachtmodus */
+/* Nachtmodus */
+
+/* General Body in Night Mode */
+body.night {
+  background-color: #333;
+  color: #fff;
+}
+
+/* General Container in Night Mode */
+#content.night {
+  border: 1px solid #444;
+  background-color: #222;
+  color: #ddd;
+}
+
+/* Tab in Night Mode */
+.tab.night {
+  border: 1px solid #555;
+  background-color: #222;
+}
+
+/* Buttons inside the tab in Night Mode */
+.tab.night button {
+  color: #ddd;
+}
+
+.tab.night button:hover {
+  background-color: #444;
+}
+
+/* Active tablink in Night Mode */
+.tab.night button.active {
+  background-color: #333;
+}
+
+/* Tab content in Night Mode */
+.tabcontent.night {
+  border: 1px solid #555;
+  background-color: #222;
+  color: #ddd;
+}
+
+/* User Icon in Night Mode */
+
+
+/* Inner Tabs in Night Mode */
+.inner-tab.night {
+  border: 1px solid #555;
+  background-color: #222;
+}
+
+/* Inner Tab Buttons in Night Mode */
+.inner-tab.night button {
+  color: #ddd;
+}
+
+.inner-tab.night button:hover {
+  background-color: #444;
+}
+
+.inner-tab.night button.active {
+  background-color: #333;
+}
+
+/* Inner Tab Content in Night Mode */
+.inner-tabcontent.night {
+  border: 1px solid #555;
+  background-color: #222;
+  color: #ddd;
+}
+
+/* Search Input and Results in Night Mode */
+#searchInput.night {
+  border: 1px solid #444;
+  background-color: #222;
+  color: #ddd;
+}
+
+#searchResults.night p {
+  color: #ddd;
+}
+
+/* Toggle Switch in Night Mode */
+.toggle-switch.night .toggle-slider {
+  background-color: #555;
+}
+
+.toggle-switch.night .toggle-slider:before {
+  background-color: #333;
+}
+
+/* Burger Menu in Night Mode */
+.burger-menu.night {
+  background-color: #222;
+  border: 1px solid #444;
+  color: #ddd;
+}
+
+/* Dropdown Menu in Night Mode */
+.dropdown-select.night {
+  background-color: #222;
+  color: #ddd;
+  border: 1px solid #444;
+}
+
+.dropdown-select.night:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+
 </style>
+
