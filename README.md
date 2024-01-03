@@ -1,24 +1,39 @@
 # mensa-app-frontend
 
 ## Project setup
+
+0. Set up .env file
+
+```
+VUE_APP_BACKEND_BASEURL=https://mensa.gregorflachs.de/api/v1
+VUE_APP_BACKEND_API_KEY=<<YOURAPIKEY>>
+```
+
+1. Dependencies
+
 ```
 npm install
 ```
-
-### Compiles and hot-reloads for development
+2. Start app
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Please before push
 
-### Lints and fixes files
 ```
-npm run lint
+npm install --save-dev --save-exact prettier
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+node --eval "fs.writeFileSync('.prettierrc','{}\n')"
+```
+Next, create a .prettierignore file to let the Prettier CLI and editors know which files to not format. Here’s an example:
+```
+# Ignore artifacts:
+build
+coverage
+```
+Then pritticise code
+```
+npx prettier . --write
+```
