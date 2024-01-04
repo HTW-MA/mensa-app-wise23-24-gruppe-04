@@ -1,7 +1,7 @@
 <template>
   <div>
     <img
-      src="../assets/user_icon.png"
+      src="../../public/assets/user_icon.png"
       alt="Burger Icon"
       @click="showMenu = !showMenu"
       style="cursor: pointer; width: 50px; height: 50px"
