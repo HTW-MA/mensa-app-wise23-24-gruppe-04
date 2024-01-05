@@ -1,4 +1,11 @@
 // service-worker.js
+// Stellen Sie sicher, dass Workbox importiert wird, wenn Sie den InjectManifest-Modus verwenden
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.1.5/workbox-sw.js');
+
+// Nutzen Sie self.__WB_MANIFEST, um eine Liste der Assets zu erhalten, die von Workbox vorauscachiert werden sollen
+workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
+
+
 self.addEventListener("install", (event) => {
   console.log("Service Worker: Installiert");
 
