@@ -3,11 +3,11 @@ module.exports = defineConfig({
   transpileDependencies: true,
   pwa: {
     name : 'Heißhunger',
-  }
-    /*workboxPluginMode: 'InjectManifest', // Verwenden des InjectManifest Modus
+
+    workboxPluginMode: 'InjectManifest', // Verwenden des InjectManifest Modus
     workboxOptions: {
       swSrc: 'service-worker.js',
       // Weitere Workbox-Optionen hier
     }
-  }*/
+  }
 });
