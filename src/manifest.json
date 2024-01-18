@@ -34,5 +34,8 @@
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "icon": "./favicon.ico"
+  "icon": "./favicon.ico",
+  "_version": "",
+  "sap.app": {},
+  "sap.ui": {}
 }
