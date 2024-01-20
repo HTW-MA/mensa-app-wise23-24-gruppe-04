@@ -5,7 +5,7 @@ import * as events from "events";  // npm install workbox-precaching
 
 precacheAndRoute(self.__WB_MANIFEST);
 
-const CACHE_NAME = 'assets-cache-v3';
+const CACHE_NAME = 'assets-cache-v4';
 
 self.addEventListener('install', event => {
   event.waitUntil(
