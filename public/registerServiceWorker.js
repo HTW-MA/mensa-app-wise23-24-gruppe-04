@@ -11,8 +11,16 @@ register(`service-worker.js`, {
   },
   registered (registration) {
     console.log('Service worker has been registered.')
-    // Trigger background sync for offline notification
-    registration.sync.register('offline-notification');
+    // Überprüfen, ob Hintergrund-Synchronisation unterstützt wird
+    if ('SyncManager' in window) {
+      registration.sync.register('offline-notification')
+        .then(() => {
+          console.log('Background sync for offline notification registered successfully.');
+        })
+        .catch((error) => {
+          console.error('Background sync registration failed:', error);
+        });
+    }
   },
   cached () {
     console.log('Content has been cached for offline use.')
@@ -21,7 +29,7 @@ register(`service-worker.js`, {
     console.log('New content is downloading.')
   },
   updated (registration) {
-    console.log('New content is available; please refresh.')
+    console.log('New content is available; please refresh.', registration)
   },
   offline () {
     console.log('No internet connection found. App is running in offline mode.')
