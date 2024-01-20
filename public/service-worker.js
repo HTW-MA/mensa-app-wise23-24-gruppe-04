@@ -1,6 +1,7 @@
 import {register} from "register-service-worker";
 // service-worker.js
-import { precacheAndRoute } from 'workbox-precaching';  // npm install workbox-precaching
+import { precacheAndRoute } from 'workbox-precaching';
+import * as events from "events";  // npm install workbox-precaching
 
 precacheAndRoute(self.__WB_MANIFEST);
 
@@ -8,7 +9,9 @@ const CACHE_NAME = 'assets-cache-v3';
 
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
+  self.registration.sync.register('offline-notification'),
+
+  caches.open(CACHE_NAME)
       .then(cache => cache.addAll([
         // Hier wird keine statische Liste von Dateien angegeben
         // Das Cachen erfolgt dynamisch beim ersten Aufruf
@@ -41,6 +44,14 @@ self.addEventListener('fetch', event => {
     })
   );
 });
+
+self.addEventListener('sync', (event) =>{
+  if (event.tag === 'offline-notification'){
+    event.waitUntil(
+    self.registration.showNotification('Du bist offline')
+    );
+  }
+})
 
 // // Importieren der Workbox-Bibliothek
 // importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.1.5/workbox-sw.js');
