@@ -2,15 +2,17 @@
 
 import { register } from 'register-service-worker'
 
-register(`sw.js`, {
+register(`service-worker.js`, {
   ready () {
     console.log(
       'App is being served from cache by a service worker.\n' +
       'For more details, visit https://goo.gl/AFskqB'
     )
   },
-  registered () {
+  registered (registration) {
     console.log('Service worker has been registered.')
+    // Trigger background sync for offline notification
+    registration.sync.register('offline-notification');
   },
   cached () {
     console.log('Content has been cached for offline use.')
@@ -18,7 +20,7 @@ register(`sw.js`, {
   updatefound () {
     console.log('New content is downloading.')
   },
-  updated () {
+  updated (registration) {
     console.log('New content is available; please refresh.')
   },
   offline () {
