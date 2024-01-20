@@ -2,7 +2,7 @@
 
 import { register } from 'register-service-worker'
 
-  register(`./public/sw.js`, {
+  register(`sw.js`, {
     ready () {
       console.log(
         'App is being served from cache by a service worker.\n' +
