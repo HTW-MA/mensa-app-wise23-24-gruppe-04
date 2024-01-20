@@ -9,13 +9,16 @@ import Papa from 'papaparse';
 export default {
   name: 'KarteFilterView',
   async mounted() {
-    try {
-      await loadGoogleMapsApi('AIzaSyBo6zblS1yTHDTQ8FGptUdrWSrOLbYwAFs'); // Use your API key
-      this.initMap();
-    } catch (error) {
-      console.error("Error initializing Google Maps", error);
+  try {
+    // Check if Google Maps API is already loaded
+    if (!window.google || !window.google.maps) {
+      await loadGoogleMapsApi(process.env.VUE_APP_GOOGLE);
     }
-  },
+    this.initMap();
+  } catch (error) {
+    console.error("Error initializing Google Maps", error);
+  }
+},
   methods: {
     async initMap() {
       const berlinCenter = { lat: 52.5200, lng: 13.4050 }; // Central location in Berlin
