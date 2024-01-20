@@ -1,4 +1,3 @@
-
 <template>
    <BurgerMenu @toggle-mode="handleToggleMode" />
   <FavMensaAndDay></FavMensaAndDay>
