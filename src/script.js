@@ -85,25 +85,5 @@ function openInnerTab(evt, tabName) {
   evt.currentTarget.className += " active";
 }
 
-// Suchfunktion, derzeit ohne Funktion weil keine Datenquelle
-
-/* function searchFunction() {
-    var input, filter, results, i;
-    input = document.getElementById("searchInput");
-    filter = input.value.toUpperCase();
-    results = document.getElementById("searchResults");
-
-    // Hier wird die Datenquelle festgelegt, die durchsucht werden soll.
-    // Zum Beispiel durch eine Array von Elementen gehen und mit 'filter' vergleichen.
-
-    results.innerHTML = ''; // Löscht alte Suchergebnisse
-
-    for (i = 0; i < data.length; i++) {
-        if (data[i].toUpperCase().indexOf(filter) > -1) {
-            results.innerHTML += '<p>' + data[i] + '</p>'; // Fügt passende Ergebnisse hinzu
-        }
-    }
-} */
-
 // Standardmodus als Tagmodus festlegen
 document.body.classList.add("day");
