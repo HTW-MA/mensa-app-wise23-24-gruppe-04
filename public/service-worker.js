@@ -8,11 +8,6 @@ const CACHE_NAME = 'assets-cache-v4';
 
 self.addEventListener('install', event => {
   event.waitUntil(
-    cacheHelper.cacheAssets([
-      "/css/main.css",
-      "/js/main.js",
-      "/img/logo.png",
-    ]),
   caches.open(CACHE_NAME)
       .then(cache => cache.addAll([
         // Hier wird keine statische Liste von Dateien angegeben
@@ -35,7 +30,6 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  const response = cacheHelper.getCacheResponse(event.request);
   event.respondWith(
     caches.open(CACHE_NAME).then(cache => {
       return cache.match(event.request).then(response => {
@@ -46,38 +40,7 @@ self.addEventListener('fetch', event => {
       });
     })
   );
-  if (response){
-    event.respondWith(response);
-  } else {
-    event.respondWith(fetch(event.request));
-  }
 });
-// Hilfsfunktionen
-async function cacheHelper() {
-  // Cache-Objekt erstellen
-  const cache = await caches.open("my-cache");
-
-  // Assets zwischenspeichern
-  async function cacheAssets(assets) {
-    for (const asset of assets) {
-      await cache.add(asset);
-    }
-  }
-
-  // Cache-Response abrufen
-  async function getCacheResponse(request) {
-    const cacheEntry = await cache.match(request);
-    if (cacheEntry) {
-      return cacheEntry.response;
-    }
-  }
-
-  return {
-    cache,
-    cacheAssets,
-    getCacheResponse,
-  };
-}
 
 self.addEventListener('sync', (event) =>{
   if (event.tag === 'offline-notification'){
