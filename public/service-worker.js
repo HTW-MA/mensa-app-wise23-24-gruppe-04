@@ -9,8 +9,6 @@ const CACHE_NAME = 'assets-cache-v4';
 
 self.addEventListener('install', event => {
   event.waitUntil(
-  self.registration.sync.register('offline-notification'),
-
   caches.open(CACHE_NAME)
       .then(cache => cache.addAll([
         // Hier wird keine statische Liste von Dateien angegeben
