@@ -46,7 +46,7 @@ self.addEventListener('fetch', event => {
           });
         }
 
-        // Nur anzeigen, wenn offline und noch nicht benachrichtigt
+        // anzeigen, wenn offline
         if (!navigator.onLine && !isOfflineNotified) {
           showNotification('Du bist offline');
           isOfflineNotified = true;
@@ -60,10 +60,24 @@ self.addEventListener('fetch', event => {
 
 self.addEventListener('sync', (event) => {
   if (event.tag === 'offline-notification') {
-    // Nur anzeigen, wenn online und noch nicht benachrichtigt
+    // anzeigen, wenn online
     if (navigator.onLine && !isOnlineNotified) {
       showNotification('Du bist wieder online');
       isOnlineNotified = true;
     }
   }
+});
+
+// Hier wird das Sync-Event angestoßen
+self.addEventListener('push', (event) => {
+  const options = {
+    body: event.data.text(),
+  };
+
+  event.waitUntil(
+    self.registration.showNotification('Push-Benachrichtigung', options)
+  );
+
+  // Hier wird das Sync-Event ausgelöst
+  self.registration.sync.register('sync-offline-notification');
 });
