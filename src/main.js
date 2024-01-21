@@ -5,6 +5,7 @@ import './registerServiceWorker'
 import { Loader } from '@googlemaps/js-api-loader';
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
     const isNightMode = localStorage.getItem('isNightMode') === 'true';
     if (isNightMode) {
