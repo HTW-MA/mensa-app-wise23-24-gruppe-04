@@ -296,10 +296,11 @@ input:checked + .toggle-slider:before {
 .dropdown {
   display: inline-block;
   position: relative;
+  size: 100px;
 }
 
 .dropdown-select {
-  padding: 8px;
+  padding: 4px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;

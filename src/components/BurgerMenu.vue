@@ -9,7 +9,7 @@
       <div :class="{ hidden: !showMenu, visible: showMenu }" class="burger-menu">
           <!-- Menu items here -->
           <ul>
-              <li @click="toggleToggleMode">{{ dayNightModeText }}</li>
+            <li @click="toggleToggleMode" class="button-style">{{ dayNightModeText }}</li>
               <!-- ... other menu items ... -->
           </ul>
       </div>
@@ -45,6 +45,25 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
+.button-style {
+  padding: 10px;
+  background-color: #007bff; /* Blue background */
+  color: white;
+  border: none;
+  border-radius: none;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
+  margin: 0;
+  margin-right: 30px;
+}
 
+.button-style:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.button-style:active {
+  background-color: #003d7a; /* Even darker blue on click */
+}
 </style>
