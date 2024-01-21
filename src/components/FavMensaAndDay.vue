@@ -1,12 +1,11 @@
 <template>
   <div style="display: flex; justify-content: space-between">
     <p><b>Deine Mensa:</b> {{ this.fav_mensa }}</p>
-  <input id="date" type="date" @change="change_date" v-model="sel_day" >
+    <input id="date" type="date" @change="change_date" v-model="sel_day" >
   </div>
   <div>
 
   </div>
-
 </template>
 
 <script>
@@ -49,27 +48,3 @@ export default {
   },
 };
 </script>
-
-<style>
-/* Stile für das Dropdown-Menü */
-.dropdown {
-  display: inline-block;
-  position: relative;
-}
-
-.dropdown-select {
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  color: #333;
-}
-
-/* Stile für das Dropdown-Auswahlmenü */
-.dropdown-select:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
-}
-</style>

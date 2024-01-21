@@ -16,35 +16,35 @@
     <div class="table-container">
       <table class="mensa_table">
         <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Adresse</th>
-            <th scope="col">Öffnungszeiten</th>
-          </tr>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Adresse</th>
+          <th scope="col">Öffnungszeiten</th>
+        </tr>
         </thead>
         <tbody>
-          <tr
-            v-for="(mensa, index) in filtered_mensen"
-            :key="index"
-            @click="add_fav_mensa(mensa)"
-          >
-            <td
-              style="
+        <tr
+          v-for="(mensa, index) in filtered_mensen"
+          :key="index"
+          @click="add_fav_mensa(mensa)"
+        >
+          <td
+            style="
                 cursor: pointer;
                 align-items: center;
                 justify-content: center;
                 display: flex;
               "
-            >
-              <p v-if="is_fav(mensa)">⭐️</p>
-              {{ mensa.name }}
-            </td>
-            <td>
-              {{ mensa.address.street }} in {{ mensa.address.zipcode }},
-              {{ mensa.address.city }}
-            </td>
-            <td>{{ this.check_open(mensa) }}</td>
-          </tr>
+          >
+            <p v-if="is_fav(mensa)">⭐️</p>
+            {{ mensa.name }}
+          </td>
+          <td>
+            {{ mensa.address.street }} in {{ mensa.address.zipcode }},
+            {{ mensa.address.city }}
+          </td>
+          <td>{{ this.check_open(mensa) }}</td>
+        </tr>
         </tbody>
       </table>
     </div>
@@ -67,7 +67,7 @@ export default {
   methods: {
     check_open(mensa) {
       //get weeksday of selected day. -1 because of the array index
-       let sel_day_weekday = new Date(localStorage.getItem("sel_day")).getDay() - 1;
+      let sel_day_weekday = new Date(localStorage.getItem("sel_day")).getDay() - 1;
 
       try {
         return (

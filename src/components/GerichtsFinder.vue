@@ -43,25 +43,25 @@
     <div class="table-container">
       <table class="meal_table">
         <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Typ</th>
-            <th scope="col">Preis</th>
-          </tr>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Typ</th>
+          <th scope="col">Preis</th>
+        </tr>
         </thead>
         <tbody>
-          <tr
-            v-for="(meal, index) in filtered_meals"
-            :key="index"
-          >
-            <td style="max-width: 30vw">{{ meal.name }}</td>
-            <td>{{ meal.category }}</td>
-            <td v-if="sel_role === '0' && meal.prices[0] !== undefined">{{ meal.prices[0].price }}</td>
-            <td v-else-if="sel_role === '1' && meal.prices[1] !== undefined">{{ meal.prices[1].price }}</td>
-            <td v-else-if="sel_role === '2' && meal.prices[2] !== undefined">{{ meal.prices[2].price }}</td>
-            <td v-else>Sorry, kein Preis verfügbar.</td>
+        <tr
+          v-for="(meal, index) in filtered_meals"
+          :key="index"
+        >
+          <td style="max-width: 30vw">{{ meal.name }}</td>
+          <td>{{ meal.category }}</td>
+          <td v-if="sel_role === '0' && meal.prices[0] !== undefined">{{ meal.prices[0].price }}</td>
+          <td v-else-if="sel_role === '1' && meal.prices[1] !== undefined">{{ meal.prices[1].price }}</td>
+          <td v-else-if="sel_role === '2' && meal.prices[2] !== undefined">{{ meal.prices[2].price }}</td>
+          <td v-else>Sorry, kein Preis verfügbar.</td>
 
-          </tr>
+        </tr>
         </tbody>
       </table>
     </div>

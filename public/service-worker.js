@@ -29,18 +29,32 @@ self.addEventListener('activate', event => {
   );
 });
 
+// Anfrage direkt in den Cache zu legen führte zu Problemen, deshalb so...
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.match(event.request).then(response => {
-        return response || fetch(event.request).then(networkResponse => {
-          cache.put(event.request, networkResponse.clone());
-          return networkResponse;
-        });
+    caches.match(event.request).then(response => {
+      if (response) {
+        return response;
+      }
+
+      return fetch(event.request).then(networkResponse => {
+        // Nur gültige Antworten im Cache speichern
+        if (networkResponse.ok) {
+          return caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, networkResponse.clone());
+            return networkResponse;
+          });
+        }
+
+        self.registration.showNotification('Du bist offline');
+        return networkResponse;
+      }).catch(() => {
+        self.registration.showNotification('Du bist offline');
       });
     })
   );
 });
+
 
 self.addEventListener('sync', (event) =>{
   if (event.tag === 'offline-notification'){
