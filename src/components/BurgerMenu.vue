@@ -1,51 +1,50 @@
 <template>
   <div>
-    <img
-      src="../../public/assets/user_icon.png"
-      alt="Burger Icon"
-      @click="showMenu = !showMenu"
-      style="cursor: pointer; width: 50px; height: 50px"
-    />
-
-    <div v-if="showMenu" class="burger-menu" @click="toggleMenu">
-      <!-- Hier kommen die Menüpunkte hin -->
-      <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Contact</li>
-        <!-- ... -->
-      </ul>
-    </div>
+      <img
+      :src="isNightMode ? nightIcon : dayIcon"
+        alt="User Icon"
+          @click="toggleMenu"
+          style="cursor: pointer; width: 50px; height: 50px"
+      />
+      <div :class="{ hidden: !showMenu, visible: showMenu }" class="burger-menu">
+          <!-- Menu items here -->
+          <ul>
+              <li @click="toggleToggleMode">{{ dayNightModeText }}</li>
+              <!-- ... other menu items ... -->
+          </ul>
+      </div>
   </div>
-
-
 </template>
 
 <script>
 export default {
   name: "BurgerMenu",
   data() {
-    return {
-      showMenu: false,
-    };
+      return {
+          showMenu: false,
+          isNightMode: false, // Keeps track of the current mode
+          dayIcon: require('../assets/user_icon.png'),
+          nightIcon: require('../assets/user_night.png'), 
+      };
+  },
+  computed: {
+      dayNightModeText() {
+          return this.isNightMode ? 'Day Mode' : 'Night Mode';
+      }
   },
   methods: {
-    toggleMenu() {
-      this.showMenu = !this.showMenu;
-      document.getElementById("burger-menu").style.display = "block";
-    },
-  },
+      toggleMenu() {
+          this.showMenu = !this.showMenu;
+      },
+      toggleToggleMode() {
+          this.isNightMode = !this.isNightMode;
+          this.$emit('toggle-mode', this.isNightMode);
+      }
+  }
 };
 </script>
 
+
 <style>
-/* Stil für das Burger-Menü */
-.burger-menu {
-  position: fixed;
-  top: 50px; /* Anpassen der Position nach Bedarf */
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 10px;
-  z-index: 999; /* Stellt sicher, dass das Menü über anderen Inhalten liegt */
-}
+
 </style>

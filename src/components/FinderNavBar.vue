@@ -1,15 +1,14 @@
 <template>
   <!-- Inner Tabs inside the "Mensa Finder" Tabs -->
   <div class="inner-tab">
-    <button
+ <!--    <button
       class="inner-tablinks"
-      onclick="window.location.href = '/hochschule'"
-    >
+      onclick="window.location.href = '/hochschule'">
       Hochschule
     </button>
     <button class="inner-tablinks" onclick="window.location.href = '/bezirk'">
       Bezirk
-    </button>
+    </button> -->
     <button class="inner-tablinks" onclick="window.location.href = '/map'">
       Karte
     </button>
