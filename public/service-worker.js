@@ -1,18 +1,20 @@
 // service-worker.js
 import { precacheAndRoute } from 'workbox-precaching';
-import * as events from "events";  // npm install workbox-precaching
 
 precacheAndRoute(self.__WB_MANIFEST);
 
-const CACHE_NAME = 'assets-cache-v4';
+const CACHE_NAME = 'assets-cache-v5';
+let isOfflineNotified = false; // Variable für den Offline-Status
+let isOnlineNotified = true;   // Variable für den Online-Status
+
+function showNotification(message) {
+  self.registration.showNotification(message);
+}
 
 self.addEventListener('install', event => {
   event.waitUntil(
-  caches.open(CACHE_NAME)
-      .then(cache => cache.addAll([
-        // Hier wird keine statische Liste von Dateien angegeben
-        // Das Cachen erfolgt dynamisch beim ersten Aufruf
-      ]))
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll([]))
       .then(() => self.skipWaiting())
   );
 });
@@ -31,23 +33,37 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.match(event.request).then(response => {
-        return response || fetch(event.request).then(networkResponse => {
-          cache.put(event.request, networkResponse.clone());
-          return networkResponse;
-        });
+    caches.match(event.request).then(response => {
+      if (response) {
+        return response;
+      }
+
+      return fetch(event.request).then(networkResponse => {
+        if (networkResponse.ok) {
+          return caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, networkResponse.clone());
+            return networkResponse;
+          });
+        }
+
+        // Nur anzeigen, wenn offline und noch nicht benachrichtigt
+        if (!navigator.onLine && !isOfflineNotified) {
+          showNotification('Du bist offline');
+          isOfflineNotified = true;
+        }
+
+        return networkResponse;
       });
     })
   );
 });
 
-self.addEventListener('sync', (event) =>{
-  if (event.tag === 'offline-notification'){
-    if (!navigator.onLine) {
-      event.waitUntil(
-        self.registration.showNotification('Du bist offline')
-      );
+self.addEventListener('sync', (event) => {
+  if (event.tag === 'offline-notification') {
+    // Nur anzeigen, wenn online und noch nicht benachrichtigt
+    if (navigator.onLine && !isOnlineNotified) {
+      showNotification('Du bist wieder online');
+      isOnlineNotified = true;
     }
   }
-})
+});
