@@ -177,19 +177,28 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  overflow-x: auto;
 }
 
 .meal_table {
   width: 100%;
   margin: 10px;
+  border-collapse: collapse;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Merriweather, sans-serif;
+  font-size: large;
 }
 
 .meal_table th {
   text-align: center;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .meal_table td {
   text-align: center;
+  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .meal_table tr {

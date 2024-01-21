@@ -120,19 +120,29 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  overflow-x: auto;
 }
 
 .mensa_table {
   width: 100%;
   margin: 10px;
+  border-collapse: collapse;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Merriweather, sans-serif;
+  font-size: large;
 }
 
 .mensa_table th {
   text-align: center;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
+
 }
 
 .mensa_table td {
   text-align: center;
+  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .mensa_table tr {
@@ -141,5 +151,12 @@ export default {
 
 .mensa_table tr:hover {
   background-color: #f5f5f5;
+}
+@media screen and (max-width: 600px) {
+  .mensa_table th, .mensa_table td {
+    padding: 5px;
+    text-align: left;
+  }
+  
 }
 </style>
