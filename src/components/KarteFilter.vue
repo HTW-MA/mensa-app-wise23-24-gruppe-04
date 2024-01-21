@@ -12,7 +12,7 @@ export default {
   try {
     // Check if Google Maps API is already loaded
     if (!window.google || !window.google.maps) {
-      await loadGoogleMapsApi(process.env.VUE_APP_GOOGLE);
+      await loadGoogleMapsApi(VUE_APP_GOOGLE_BACKEND_API_KEY);
     }
     this.initMap();
   } catch (error) {

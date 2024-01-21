@@ -31,7 +31,6 @@ const loader = new Loader({
 
 loader.load().then(() => {
   // Google Maps API is loaded and available
-  // Initialize your map or other components that depend on Google Maps here
   initMap();
 }).catch(e => {
   // Handle errors in loading the API
@@ -39,6 +38,4 @@ loader.load().then(() => {
 });
 
 function initMap() {
-  // Your map initialization logic
-  // Example: new google.maps.Map(document.getElementById('map'), {...});
 }

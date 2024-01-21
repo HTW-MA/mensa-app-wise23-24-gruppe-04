@@ -157,6 +157,35 @@ export default {
     padding: 5px;
     text-align: left;
   }
-  
+}
+
+/*Night Mode*/
+body.night #searchInput {
+  border-color: lightgray; /* Lighter border for better visibility */
+  background-color: #333; /* Darker background */
+  color: white; /* Light text color */
+}
+
+
+
+body.night .mensa_table {
+  color: white; /* Light text color for better visibility */
+  background-color: #222; /* Darker background for the table */
+}
+
+body.night .mensa_table th {
+  background-color: #333; /* Darker background for table headers */
+  color: white; /* Light text color */
+  border-bottom: 1px solid grey; /* Adjust border color */
+  border: 1px solid grey; /* Adjust border color */
+}
+
+body.night .mensa_table td {
+  border-bottom: 1px solid grey; /* Adjust border color */
+  border: 1px solid grey; /* Adjust border color */
+}
+
+body.night .mensa_table tr:hover {
+  background-color: #444; /* Darker background for hover */
 }
 </style>

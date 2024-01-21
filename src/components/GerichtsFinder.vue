@@ -39,7 +39,7 @@
     class="inner-tabcontent"
     style="align-items: center; justify-content: space-between"
   >
-    <h4>Speisekarte</h4>
+    <h3>Speisekarte</h3>
     <div class="table-container">
       <table class="meal_table">
         <thead>
@@ -172,7 +172,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .table-container {
   display: flex;
   justify-content: space-around;
@@ -208,4 +208,27 @@ export default {
 .meal_table tr:hover {
   background-color: #f5f5f5;
 }
+
+/* Night Mode Styles for .meal_table */
+body.night .meal_table {
+  color: white; /* Light text color for better visibility */
+  background-color: #222; /* Darker background for the table */
+}
+
+body.night .meal_table th {
+  background-color: #333; /* Darker background for table headers */
+  color: white; /* Light text color */
+  border-bottom: 1px solid grey; /* Adjust border color */
+  border: 1px solid grey; /* Adjust border color */
+}
+
+body.night .meal_table td {
+  border-bottom: 1px solid grey; /* Adjust border color */
+  border: 1px solid grey; /* Adjust border color */
+}
+
+body.night .meal_table tr:hover {
+  background-color: #444; /* Darker background for hover */
+}
+
 </style>
