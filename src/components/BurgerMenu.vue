@@ -23,8 +23,8 @@ export default {
       return {
           showMenu: false,
           isNightMode: false, // Keeps track of the current mode
-          dayIcon: require('../assets/user_icon.png'),
-          nightIcon: require('../assets/user_night.png'), 
+          dayIcon: require('../../public/assets/user_icon.png'),
+          nightIcon: require('../../public/assets/user_night.png'), 
       };
   },
   computed: {
