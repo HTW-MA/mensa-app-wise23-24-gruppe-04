@@ -19,6 +19,5 @@ export const loadGoogleMapsApi = (apiKey) => {
       throw error;
     });
   }
-
   return googleMapsPromise;
 };

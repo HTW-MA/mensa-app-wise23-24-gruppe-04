@@ -3,31 +3,38 @@
 </template>
 
 <script>
-import { loadGoogleMapsApi } from '../GoogleMapsLoader';
+import { Loader } from "@googlemaps/js-api-loader";
 import Papa from 'papaparse';
 
 export default {
   name: 'KarteFilterView',
   async mounted() {
-  try {
-    // Check if Google Maps API is already loaded
-    if (!window.google || !window.google.maps) {
-      await loadGoogleMapsApi(AIzaSyC1oEIsbKw6I7iLe_98MejX6bcL-c2emOU);
+    try {
+      const apiKey = process.env.VUE_APP_GOOGLE_MAPS_API_KEY;
+      await this.loadGoogleMapsApi(apiKey);
+      this.initMap();
+    } catch (error) {
+      console.error("Error initializing Google Maps", error);
     }
-    this.initMap();
-  } catch (error) {
-    console.error("Error initializing Google Maps", error);
-  }
-},
+  },
   methods: {
+    async loadGoogleMapsApi(apiKey) {
+      if (!window.google || !window.google.maps) {
+        const loader = new Loader({
+          apiKey: apiKey,
+          version: "weekly",
+          libraries: ["places"]
+        });
+        await loader.load();
+      }
+    },
     async initMap() {
-      const berlinCenter = { lat: 52.5200, lng: 13.4050 }; // Central location in Berlin
+      const berlinCenter = { lat: 52.5200, lng: 13.4050 };
       const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
         center: berlinCenter
       });
 
-      // Load and process CSV data
       try {
         const csvData = await this.loadCsvData('/data/Berlin_Mensas.csv');
         this.placeMarkers(map, csvData);
@@ -74,15 +81,6 @@ export default {
   }
 }
 </script>
-
-<style>
-#map {
-  height: 400px; /* Adjust as necessary */
-  width: 100%; /* Adjust as necessary */
-}
-</style>
-
-
 
 <style>
 #map {

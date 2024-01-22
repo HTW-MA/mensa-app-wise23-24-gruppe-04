@@ -2,8 +2,6 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "../router/router";
 import '../public/app'
-import { Loader } from '@googlemaps/js-api-loader';
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,24 +17,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Standardmodus als Tagmodus festlegen
 document.body.classList.add("day");
-
-
-// Google Maps
-const googleMapsApiKey = AIzaSyC1oEIsbKw6I7iLe_98MejX6bcL-c2emOU;
-
-const loader = new Loader({
-  apiKey: googleMapsApiKey,
-  version: 'weekly', // or specify a version number
-  libraries: ['places'] // include additional libraries as needed
-});
-
-loader.load().then(() => {
-  // Google Maps API is loaded and available
-  initMap();
-}).catch(e => {
-  // Handle errors in loading the API
-  console.error(e);
-});
-
-function initMap() {
-}
