@@ -19,6 +19,44 @@
 import BurgerMenu from "@/components/BurgerMenu.vue";
 import FavMensaAndDay from "@/components/FavMensaAndDay.vue";
 
+import { initializeApp } from "firebase/app";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAY31L2LhK5xYsPUjSEl8Y4GPOFfRrwol4",
+  authDomain: "mensaapp-f8426.firebaseapp.com",
+  projectId: "mensaapp-f8426",
+  storageBucket: "mensaapp-f8426.appspot.com",
+  messagingSenderId: "940851381142",
+  appId: "1:940851381142:web:4a62e6cd6f421ca12ad3b7",
+  measurementId: "G-VY1DF9GLHX"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Get registration token. Initially this makes a network call, once retrieved
+// subsequent calls to getToken will return from cache.
+const messaging = getMessaging();
+onMessage(messaging, (payload) => {
+  console.log('Message received. ', payload);
+  // ...
+});
+getToken(messaging, { vapidKey: 'BGXCD-wBe5kurQfaxemJgBeGTWaz0n3SDC_-dbMIQNkveyeRplgOmWAok7ufOkXV3IXTa3OA7TLbQCHBo3-iNUk' }).then((currentToken) => {
+  if (currentToken) {
+    console.log('This is the Token:', currentToken);
+  } else {
+    // Show permission request UI
+    console.log('No registration token available. Request permission to generate one.');
+    // ...
+  }
+}).catch((err) => {
+  console.log('An error occurred while retrieving token. ', err);
+  // ...
+});
+
+
+
 export default {
   name: "App",
   components: {
