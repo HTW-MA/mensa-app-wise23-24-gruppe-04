@@ -22,7 +22,7 @@ document.body.classList.add("day");
 
 
 // Google Maps
-const googleMapsApiKey = VUE_APP_BACKEND_GOOGLE_MAPS_API_KEY;
+const googleMapsApiKey = AIzaSyC1oEIsbKw6I7iLe_98MejX6bcL-c2emOU;
 
 const loader = new Loader({
   apiKey: googleMapsApiKey,
