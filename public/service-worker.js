@@ -1,45 +1,9 @@
 // service-worker.js
-// Give the service worker access to Firebase Messaging.
-// Note that you can only use Firebase Messaging here. Other Firebase libraries
-// are not available in the service worker.
-importScripts('https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js');
 import { precacheAndRoute } from 'workbox-precaching';
-
-// Initialize the Firebase app in the service worker by passing in
-// your app's Firebase config object.
-// https://firebase.google.com/docs/web/setup#config-object
-firebase.initializeApp({
-  apiKey: "AIzaSyAY31L2LhK5xYsPUjSEl8Y4GPOFfRrwol4",
-  authDomain: "mensaapp-f8426.firebaseapp.com",
-  projectId: "mensaapp-f8426",
-  storageBucket: "mensaapp-f8426.appspot.com",
-  messagingSenderId: "940851381142",
-  appId: "1:940851381142:web:4a62e6cd6f421ca12ad3b7",
-  measurementId: "G-VY1DF9GLHX"
-});
-
-// Retrieve an instance of Firebase Messaging so that it can handle background
-// messages.
-const messaging = firebase.messaging();
-messaging.onBackgroundMessage((payload) => {
-  console.log(
-    '[firebase-messaging-sw.js] Received background message ',
-    payload
-  );
-  // Customize notification here
-  const notificationTitle = payload.notification.title;
-  const notificationOptions = {
-    body: payload.notification.body,
-    icon: '/favicon.ico'
-  };
-
-  self.registration.showNotification(notificationTitle, notificationOptions);
-});
 
 precacheAndRoute(self.__WB_MANIFEST);
 
-const CACHE_NAME = 'assets-cache-v5';
+const CACHE_NAME = 'assets-cache-v6';
 let isOfflineNotified = false; // Variable für den Offline-Status
 let isOnlineNotified = true;   // Variable für den Online-Status
 
@@ -81,7 +45,6 @@ self.addEventListener('fetch', event => {
             return networkResponse;
           });
         }
-
         // anzeigen, wenn offline
         if (!navigator.onLine && !isOfflineNotified) {
           showNotification('Du bist offline');
