@@ -47,5 +47,3 @@ import { register } from 'register-service-worker'
       });
     }
   });
-
- <button class="green-button" onclick="requesPermission()">Request Permission</button>
