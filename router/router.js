@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HochschuleFilterView from "@/views/HochschuleFilterView.vue";
+/*import HochschuleFilterView from "@/views/HochschuleFilterView.vue";*/
 import LandingPageView from "@/views/LandingPageView.vue";
 import MensaFinderView from "@/views/MensaFinderView.vue";
 import KarteFilterView from "@/views/KarteFilterView.vue";
-import BezirkFilterView from "@/views/BezirkFilterView.vue";
+/*import BezirkFilterView from "@/views/BezirkFilterView.vue";*/
 import GerichtsFinderView from "@/views/GerichtsFinderView.vue";
 
 const routes = [
@@ -17,21 +17,21 @@ const routes = [
     name: "home",
     component: LandingPageView,
   },
-  {
+  /*{
     path: "/hochschule",
     name: "hochschule",
     component: HochschuleFilterView,
-  },
+  },*/
   {
     path: "/map",
     name: "map",
     component: KarteFilterView,
   },
-  {
+  /*{
     path: "/bezirk",
     name: "bezirk",
     component: BezirkFilterView,
-  },
+  },*/
   {
     path: "/gerichte",
     name: "gerichte",

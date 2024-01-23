@@ -2,7 +2,7 @@
   <!-- Outer Tab content Home -->
   <div id="Home" class="tabcontent">
     <h3>Home</h3>
-    <h1>H1 Willkommen bei Heißhunger!</h1>
+    <h1>Willkommen bei UniFeast!</h1>
     <p>
       Dies ist eine von Studenten erstellte Progressive Web App, die einerseits
       als Übung aber auch als möglichen Ersatz für die bisherigen Lösungen
@@ -19,7 +19,7 @@
   <!--  <script>-->
   <!--    if ('serviceWorker' in navigator) {-->
   <!--      window.addEventListener('load', () => {-->
-  <!--        navigator.serviceWorker.register('/service-worker.js')-->
+  <!--        navigator.serviceWorker.register('/sw.js')-->
   <!--          .then((reg) => {-->
   <!--            console.log('Service Worker: Registriert', reg);-->
   <!--          })-->

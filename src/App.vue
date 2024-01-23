@@ -11,14 +11,13 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
   <!-- ios support -->
-<!--  <link rel="apple-touch-icon" href="../public/img/icons/apple-touch-icon.png">-->
-<!--  <meta name="apple-mobile-web-app-status-bar" content="#aa7700">-->
+  <link rel="apple-touch-icon" href="../public/img/icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
 </template>
 
 <script>
 import BurgerMenu from "@/components/BurgerMenu.vue";
 import FavMensaAndDay from "@/components/FavMensaAndDay.vue";
-
 
 export default {
   name: "App",
@@ -35,6 +34,11 @@ export default {
   },
   methods: {
     handleToggleMode(isNightMode) {
+      this.applyTheme(isNightMode);
+      // Update the local storage
+      localStorage.setItem('isNightMode', isNightMode);
+    },
+    applyTheme(isNightMode) {
       if (isNightMode) {
         document.body.classList.add("night");
         document.body.classList.remove("day");
@@ -42,8 +46,6 @@ export default {
         document.body.classList.add("day");
         document.body.classList.remove("night");
       }
-      // Update the local storage
-      localStorage.setItem('isNightMode', isNightMode);
     }
   },
   props: {},
@@ -51,6 +53,7 @@ export default {
     return {};
   },
 };
+
 </script>
 
 <style>
@@ -69,16 +72,16 @@ body {
   transition:
     background-color 0.5s,
     color 0.5s;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 0px;
   text-align: center;
+
 }
 
 /* Allgemein Container*/
 #content {
   border: 1px solid #ddd;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 0px;
 }
 
 /* Tagmodus */
@@ -117,25 +120,32 @@ body.day {
 
 /* Change background color of buttons on hover*/
 .tab button:hover {
-  background-color: #ddd;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+  background-color: lightgrey;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
 }
 
 /* Style the tab content */
 .tabcontent {
   padding: 6px 12px;
-  border: 1px solid #ccc;
+  border: 0px solid #ccc;
   border-top: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Merriweather, sans-serif;
+  font-size: large;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
 }
 
 /* Benutzer-Icon */
 .user-icon {
   height: 30px;
-  /* oder eine andere passende Größe */
   width: auto;
 }
 
@@ -148,6 +158,7 @@ body.day {
   background-color: #f1f1f1;
   text-align: center;
   border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
 }
 
@@ -163,16 +174,23 @@ body.day {
   transition: 0.3s;
   font-size: 17px;
   text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Merriweather, sans-serif;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
 }
 
 /* Ändern der Hintergrundfarbe der inneren Buttons beim Hovern */
 .inner-tab button:hover {
-  background-color: #dddddd7a;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
 }
 
 /* Erstellen einer aktiven inneren Tablink-Klasse */
 .inner-tab button.active {
-  background-color: #ccc;
+  background-color: lightgrey;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
 }
 
 /* Stile für den inneren Tab-Inhalt */
@@ -180,6 +198,8 @@ body.day {
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Merriweather, sans-serif;
 }
 
 /*Hier der Style für die Suchleiste und die Suchergebnisse*/
@@ -189,11 +209,16 @@ body.day {
   margin: 5px 0;
   border: 1px solid #ddd;
   border-radius: 4px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Merriweather, sans-serif;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
 }
 
 /*Stil für die Suchergebnisse*/
 #searchResults p {
   width: 50%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Merriweather, sans-serif;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 /* Toggle Switch Container */
 .toggle-switch {
@@ -252,22 +277,30 @@ input:checked + .toggle-slider:before {
 
 /* Stil für das Burger-Menü */
 .burger-menu {
-  position: fixed;
-  top: 50px; /* Anpassen der Position nach Bedarf */
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: white;
   border: 1px solid #ccc;
   padding: 10px;
-  z-index: 999; /* Stellt sicher, dass das Menü über anderen Inhalten liegt */
+  z-index: 999;
+  width: auto;
+  max-width: 300px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: none; /* Hides the menu initially */
 }
+
 
 /* Stile für das Dropdown-Menü */
 .dropdown {
   display: inline-block;
   position: relative;
+  size: 100px;
 }
 
 .dropdown-select {
-  padding: 8px;
+  padding: 4px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -290,59 +323,47 @@ input:checked + .toggle-slider:before {
   display: block; /* or whatever display type is appropriate */
 }
 
-/* Ab hier Nachtmodus */
 /* Nachtmodus */
 
-/* General Body in Night Mode */
 body.night {
-  background-color: #333;
+  background-color: #121212;
   color: #fff;
 }
 
-/* General Container in Night Mode */
 #content.night {
   border: 1px solid #444;
   background-color: #222;
   color: #ddd;
 }
 
-/* Tab in Night Mode */
 .tab.night {
-  border: 1px solid #555;
+  border: 1px solid darkgrey;
   background-color: #222;
 }
 
-/* Buttons inside the tab in Night Mode */
 .tab.night button {
-  color: #ddd;
+  color: darkgrey;
 }
 
 .tab.night button:hover {
   background-color: #444;
 }
 
-/* Active tablink in Night Mode */
 .tab.night button.active {
   background-color: #333;
 }
 
-/* Tab content in Night Mode */
 .tabcontent.night {
   border: 1px solid #555;
   background-color: #222;
   color: #ddd;
 }
 
-/* User Icon in Night Mode */
-
-
-/* Inner Tabs in Night Mode */
 .inner-tab.night {
   border: 1px solid #555;
   background-color: #222;
 }
 
-/* Inner Tab Buttons in Night Mode */
 .inner-tab.night button {
   color: #ddd;
 }
@@ -355,14 +376,12 @@ body.night {
   background-color: #333;
 }
 
-/* Inner Tab Content in Night Mode */
 .inner-tabcontent.night {
   border: 1px solid #555;
   background-color: #222;
   color: #ddd;
 }
 
-/* Search Input and Results in Night Mode */
 #searchInput.night {
   border: 1px solid #444;
   background-color: #222;
@@ -373,7 +392,6 @@ body.night {
   color: #ddd;
 }
 
-/* Toggle Switch in Night Mode */
 .toggle-switch.night .toggle-slider {
   background-color: #555;
 }
@@ -382,14 +400,12 @@ body.night {
   background-color: #333;
 }
 
-/* Burger Menu in Night Mode */
 .burger-menu.night {
   background-color: #222;
   border: 1px solid #444;
   color: #ddd;
 }
 
-/* Dropdown Menu in Night Mode */
 .dropdown-select.night {
   background-color: #222;
   color: #ddd;
@@ -400,4 +416,30 @@ body.night {
   border-color: #007bff;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
 }
+
+/* Addendum: Stile für H3 und P */
+h3, h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Merriweather, sans-serif;
+  color: #2c3e50; /* Or any color that fits your design */
+  margin-bottom: 10px; /* Adjust as needed */
+  text-align: center; /* Center align the text */
+}
+
+p {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Merriweather, sans-serif;
+  color: #2c3e50; /* Consistent with h3 color */
+  margin-bottom: 20px; /* Adjust as needed */
+  text-align: center; /* Center align the text */
+}
+body.night h3, body.night p, body.night h1 {
+  color: white; /* Lighter text color for better visibility in night mode */
+}
+
+@media screen and (max-width: 600px) {
+  h3, p, h1 {
+    /* Adjust styles for mobile if needed */
+    text-align: left; /* Example: Align text left on smaller screens */
+  }
+}
+
 </style>

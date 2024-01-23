@@ -1,6 +1,6 @@
 {
-  "name": "Heißhunger",
-  "short_name": "Heißhunger",
+  "name": "UniFeast",
+  "short_name": "UniFeast",
   "theme_color": "#ffffff",
   "start_url": ".",
   "display": "standalone",

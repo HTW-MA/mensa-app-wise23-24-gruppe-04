@@ -39,29 +39,29 @@
     class="inner-tabcontent"
     style="align-items: center; justify-content: space-between"
   >
-    <h4>Speisekarte</h4>
+    <h3>Speisekarte</h3>
     <div class="table-container">
       <table class="meal_table">
         <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Typ</th>
-          <th scope="col">Preis</th>
-        </tr>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Typ</th>
+            <th scope="col">Preis</th>
+          </tr>
         </thead>
         <tbody>
-        <tr
-          v-for="(meal, index) in filtered_meals"
-          :key="index"
-        >
-          <td style="max-width: 30vw">{{ meal.name }}</td>
-          <td>{{ meal.category }}</td>
-          <td v-if="sel_role === '0' && meal.prices[0] !== undefined">{{ meal.prices[0].price }}</td>
-          <td v-else-if="sel_role === '1' && meal.prices[1] !== undefined">{{ meal.prices[1].price }}</td>
-          <td v-else-if="sel_role === '2' && meal.prices[2] !== undefined">{{ meal.prices[2].price }}</td>
-          <td v-else>Sorry, kein Preis verfügbar.</td>
+          <tr
+            v-for="(meal, index) in filtered_meals"
+            :key="index"
+          >
+            <td style="max-width: 30vw">{{ meal.name }}</td>
+            <td>{{ meal.category }}</td>
+            <td v-if="sel_role === '0' && meal.prices[0] !== undefined">{{ meal.prices[0].price }}</td>
+            <td v-else-if="sel_role === '1' && meal.prices[1] !== undefined">{{ meal.prices[1].price }}</td>
+            <td v-else-if="sel_role === '2' && meal.prices[2] !== undefined">{{ meal.prices[2].price }}</td>
+            <td v-else>Sorry, kein Preis verfügbar.</td>
 
-        </tr>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -172,24 +172,33 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .table-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  overflow-x: auto;
 }
 
 .meal_table {
   width: 100%;
   margin: 10px;
+  border-collapse: collapse;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Merriweather, sans-serif;
+  font-size: large;
 }
 
 .meal_table th {
   text-align: center;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .meal_table td {
   text-align: center;
+  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .meal_table tr {
@@ -199,4 +208,27 @@ export default {
 .meal_table tr:hover {
   background-color: #f5f5f5;
 }
+
+/* Night Mode Styles for .meal_table */
+body.night .meal_table {
+  color: white; /* Light text color for better visibility */
+  background-color: #222; /* Darker background for the table */
+}
+
+body.night .meal_table th {
+  background-color: #333; /* Darker background for table headers */
+  color: white; /* Light text color */
+  border-bottom: 1px solid grey; /* Adjust border color */
+  border: 1px solid grey; /* Adjust border color */
+}
+
+body.night .meal_table td {
+  border-bottom: 1px solid grey; /* Adjust border color */
+  border: 1px solid grey; /* Adjust border color */
+}
+
+body.night .meal_table tr:hover {
+  background-color: #444; /* Darker background for hover */
+}
+
 </style>

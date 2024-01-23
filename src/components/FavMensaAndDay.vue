@@ -1,7 +1,7 @@
 <template>
   <div style="display: flex; justify-content: space-between">
     <p><b>Deine Mensa:</b> {{ this.fav_mensa }}</p>
-    <input id="date" type="date" @change="change_date" v-model="sel_day" >
+  <input id="date" type="date" @change="change_date" v-model="sel_day" >
   </div>
   <div>
 
