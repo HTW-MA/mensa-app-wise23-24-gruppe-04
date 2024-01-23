@@ -7,7 +7,14 @@ import { register } from 'register-service-worker'
       console.log(
         'App is being served from cache by a service worker.\n' +
         'For more details, visit https://goo.gl/AFskqB'
-      )
+      );
+        Notification.requestPermission().then(function (permission) {
+          if (permission === "granted") {
+            navigator.serviceWorker.ready.then(function (registration) {
+
+            });
+          }
+        });
     },
     registered(registration) {
       console.log('Service worker has been registered.')
@@ -40,10 +47,4 @@ import { register } from 'register-service-worker'
   })
 
 
-  Notification.requestPermission().then(function (permission) {
-    if (permission === "granted") {
-      navigator.serviceWorker.ready.then(function (registration) {
 
-      });
-    }
-  });

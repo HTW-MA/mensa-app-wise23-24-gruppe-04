@@ -3,7 +3,7 @@ import { precacheAndRoute } from 'workbox-precaching';
 
 precacheAndRoute(self.__WB_MANIFEST);
 
-const CACHE_NAME = 'assets-cache-v6';
+const CACHE_NAME = 'assets-cache-v7';
 let isOfflineNotified = false; // Variable für den Offline-Status
 let isOnlineNotified = true;   // Variable für den Online-Status
 
