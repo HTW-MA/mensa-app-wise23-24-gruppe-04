@@ -15,6 +15,8 @@
         <li>About</li>
         <li>Contact</li>
         <!-- ... -->
+        <!-- Benachrichtigungs-Button -->
+        <li @click="requestNotificationPermission">Benachrichtigungen reactivities</li>
       </ul>
     </div>
   </div>
@@ -44,6 +46,14 @@ export default {
     toggleToggleMode() {
       this.isNightMode = !this.isNightMode;
       this.$emit('toggle-mode', this.isNightMode);
+    },
+    requestNotificationPermission() {
+      // Benachrichtigungsanfrage hier platzieren
+      Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+          console.log('Benachrichtigungsanfrage erfolgreich.');
+        }
+      });
     }
   }
 
