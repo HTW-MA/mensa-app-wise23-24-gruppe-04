@@ -73,8 +73,8 @@ body {
     background-color 0.5s,
     color 0.5s;
   border-radius: 0px;
-    text-align: center;
-    
+  text-align: center;
+
 }
 
 /* Allgemein Container*/
@@ -121,14 +121,14 @@ body.day {
 /* Change background color of buttons on hover*/
 .tab button:hover {
   background-color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
   background-color: lightgrey;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
 }
 
@@ -139,7 +139,7 @@ body.day {
   border-top: none;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Merriweather, sans-serif;
   font-size: large;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
 }
 
@@ -158,7 +158,7 @@ body.day {
   background-color: #f1f1f1;
   text-align: center;
   border-radius: 25px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
 }
 
@@ -175,21 +175,21 @@ body.day {
   font-size: 17px;
   text-align: center;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Merriweather, sans-serif;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
 }
 
 /* Ändern der Hintergrundfarbe der inneren Buttons beim Hovern */
 .inner-tab button:hover {
   background-color: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
 }
 
 /* Erstellen einer aktiven inneren Tablink-Klasse */
 .inner-tab button.active {
   background-color: lightgrey;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
 }
 
@@ -198,7 +198,7 @@ body.day {
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Merriweather, sans-serif;
 }
 
@@ -210,7 +210,7 @@ body.day {
   border: 1px solid #ddd;
   border-radius: 4px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Merriweather, sans-serif;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 
 }
 
@@ -218,7 +218,7 @@ body.day {
 #searchResults p {
   width: 50%;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Merriweather, sans-serif;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 /* Toggle Switch Container */
 .toggle-switch {
@@ -277,17 +277,17 @@ input:checked + .toggle-slider:before {
 
 /* Stil für das Burger-Menü */
 .burger-menu {
-  position: absolute; 
-  top: 140px; 
-  left: 50%; 
-  transform: translateX(-50%); 
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: white;
   border: 1px solid #ccc;
   padding: 10px;
   z-index: 999;
-  width: auto; 
-  max-width: 300px; 
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  width: auto;
+  max-width: 300px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   display: none; /* Hides the menu initially */
 }
 
@@ -443,4 +443,3 @@ body.night h3, body.night p, body.night h1 {
 }
 
 </style>
-
