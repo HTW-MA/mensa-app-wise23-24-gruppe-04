@@ -9,9 +9,23 @@
       dienen soll.
     </p>
     <p>
-      [Disclaimer: Hier will ich später so ne Auswahl aus Lieblingsmensen und
-      Gerichten haben, weiß nicht ob das über die API geht, aber könnt ihr ja
-      Bescheid sagen.]
+      Die App ist in der Lage, die Speisepläne der Mensen Stadt Berlin anzuzeigen. Die App ist in der Lage, die Daten der Mensen
+      zwischenspeichern, sodass sie auch offline verfügbar sind.
+    </p>
+    <p>
+      Die Ersteller:
+    </p>
+    <p>
+      Steudler, Jascha; 588282
+    </p>
+    <p>
+      Schneider, Joshua; 584932
+    </p>
+    <p>
+      Hossain, Annas; 585018 
+    </p>
+    <p>
+      <a href="https://github.com/HTW-MA/mensa-app-wise23-24-gruppe-04">Hier der Link zum Repo</a>
     </p>
   </div>
 
